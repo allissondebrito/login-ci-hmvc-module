@@ -15,11 +15,12 @@ class Login extends CI_Controller {
 	// Método executado após o submit do formulário de login
 	public function logar()
 	{
-		$this->load->model('Login_model');
-		$emailAdmin = $this->input->post('emailAdmin'); //Input Text E-mail (emailAdmin)
-		$senhaAdmin = $this->input->post('senhaAdmin'); // Input Password Senha (senhaAdmin)
+		$this->load->model('Login_model'); //Model Login
 
-		if($this->Login_model->logar($emailAdmin,$senhaAdmin) != 0)
+		$emailAdmin = $this->input->post('emailAdmin'); //Input Text E-mail (emailAdmin)
+		$senhaAdmin = md5($this->input->post('senhaAdmin')); // Input Password Senha (senhaAdmin)
+
+		if($this->Login_model->logar($emailAdmin,$senhaAdmin))
 		{
 			echo 'Usuário encontrado'; // Ação executada caso o usuário seja validado
 		}
