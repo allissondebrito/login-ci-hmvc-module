@@ -20,13 +20,13 @@ class Login extends CI_Controller {
 		$emailAdmin = $this->input->post('emailAdmin'); //Input Text E-mail (emailAdmin)
 		$senhaAdmin = md5($this->input->post('senhaAdmin')); // Input Password Senha (senhaAdmin)
 
-		if($this->Login_model->logar($emailAdmin,$senhaAdmin))
+		if($this->Login_model->logar($emailAdmin,$senhaAdmin)) //Caso retorne TRUE 
 		{
-			echo 'Usuário encontrado'; // Ação executada caso o usuário seja validado
+			redirect('http://www.google.com.br/'); //Exemplo de redirect 
 		}
-		else
+		else //Caso retorne FALSE
 		{
-			echo 'Usuário não encontrado'; //Ação Executada caso o usuário não seja encontrado
+			redirect(base_url('login'));
 		}
 	}
 

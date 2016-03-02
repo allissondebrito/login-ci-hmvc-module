@@ -23,7 +23,17 @@
         
         <div class="container">    
 
-        	<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        	<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+				<!-- Mensagem de erro de login  -->
+				<?php if($this->session->flashdata('erroLogin')): ?>
+				<div class="alert alert-danger">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+					<?php echo $this->session->flashdata('erroLogin');?>
+				</div>
+				<?php endif; ?>
+				<!-- # Mensagem de erro de login -->
+
         		<div class="panel panel-info" >
 
         			<div class="panel-heading">
