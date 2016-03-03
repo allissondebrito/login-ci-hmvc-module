@@ -22,9 +22,18 @@ class Login extends CI_Controller {
 
 		if($this->Login_model->logar($emailAdmin,$senhaAdmin)) //Caso retorne TRUE 
 		{
-			redirect('http://www.google.com.br/'); //Exemplo de redirect 
+			redirect(base_url('welcome/teste')); //Exemplo de redirect 
 		}
 		else //Caso retorne FALSE
+		{
+			redirect(base_url('login'));
+		}
+	}
+
+	public function logout()
+	{
+		$this->load->model('Login_model');
+		if($this->Login_model->logout())
 		{
 			redirect(base_url('login'));
 		}

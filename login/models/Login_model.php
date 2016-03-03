@@ -30,6 +30,38 @@ class Login_model extends CI_Model {
 
 	}
 
+	//Método de verificação se o usuário está logado e se a hash do mesmo é válida
+	public function logado()
+	{
+		if($this->session->userdata('hashAdmin'))
+		{
+			$this->db->where('hashAdmin',$this->session->userdata('hashAdmin'));
+			$queryExec = $this->db->get('admin');
+
+			if($queryExec->num_rows() == 1)
+			{
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
+		}	
+		else
+		{
+			return FALSE;
+		}
+
+	}
+
+
+	// Método para realização do logout
+	public function logout()
+	{
+		$this->session->sess_destroy('hashAdmin');
+		return TRUE;
+	}
+
 }
 
 /* End of file Login_model.php */
